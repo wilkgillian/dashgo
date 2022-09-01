@@ -16,57 +16,23 @@ import {
   useBreakpointValue
 } from '@chakra-ui/react';
 import Link from 'next/link';
-import {
-  JSXElementConstructor,
-  Key,
-  ReactElement,
-  ReactFragment,
-  ReactPortal,
-  useEffect
-} from 'react';
+import { useState } from 'react';
 import { RiAddLine, RiEditLine } from 'react-icons/ri';
-import { useQuery } from 'react-query';
 import Header from '../../components/Header';
 import Pagination from '../../components/Pagination';
 import Sidebar from '../../components/Sidebar';
-import { api } from '../../services/api';
+import { useUsers } from '../../services/hooks/useUsers';
 
 export default function UserList() {
-  const { data, isLoading, isFetching, error } = useQuery(
-    'users',
-    async () => {
-      const { data } = await api.get('users');
+  const [page, setPage] = useState(1);
 
-      const users = data.users.map(
-        (user: {
-          id: number;
-          name: string;
-          email: string;
-          createdAt: string;
-        }) => {
-          return {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            createdAt: new Date(user.createdAt).toLocaleDateString('pt-BR', {
-              day: '2-digit',
-              month: 'long',
-              year: 'numeric'
-            })
-          };
-        }
-      );
-      return users;
-    },
-    {
-      staleTime: 1000 * 5
-    }
-  );
-
+  const { data, isLoading, isFetching, error } = useUsers(page);
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true
   });
+
+  console.log(page)
 
   return (
     <Box>
@@ -117,7 +83,7 @@ export default function UserList() {
                   </Tr>
                 </Thead>
                 <Tbody>
-                  {data.map(
+                  {data.users.map(
                     (user: {
                       id: number;
                       name: string;
@@ -163,7 +129,11 @@ export default function UserList() {
                   )}
                 </Tbody>
               </Table>
-              <Pagination />
+              <Pagination
+                totalCountRegisters={data.totalCount}
+                currentPage={page}
+                onPageChange={setPage}
+              />
             </>
           )}
         </Box>
