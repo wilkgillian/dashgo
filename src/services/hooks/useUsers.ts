@@ -5,13 +5,13 @@ type User = {
   id: string;
   name: string;
   email: string;
-  createdAt: string;
+  created_at: string;
 };
 type GetUsersResponse = {
   totalCount: number;
   users: User[];
 };
-export async function getUsers(page: number) {
+export async function getUsers(page: number): Promise<GetUsersResponse> {
   const { data, headers } = await api.get('users', {
     params: {
       page
@@ -20,20 +20,18 @@ export async function getUsers(page: number) {
 
   const totalCount = Number(headers['x-total-count']);
 
-  const users = data.users.map(
-    (user: { id: number; name: string; email: string; createdAt: string }) => {
-      return {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        createdAt: new Date(user.createdAt).toLocaleDateString('pt-BR', {
-          day: '2-digit',
-          month: 'long',
-          year: 'numeric'
-        })
-      };
-    }
-  );
+  const users = data.users.map(user => {
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      created_at: new Date(user.created_at).toLocaleDateString('pt-BR', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric'
+      })
+    };
+  });
   return {
     users,
     totalCount

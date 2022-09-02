@@ -1,5 +1,6 @@
 import {
   Box,
+  Link as ChakraLink,
   Button,
   Checkbox,
   Flex,
@@ -21,7 +22,9 @@ import { RiAddLine, RiEditLine } from 'react-icons/ri';
 import Header from '../../components/Header';
 import Pagination from '../../components/Pagination';
 import Sidebar from '../../components/Sidebar';
+import { api } from '../../services/api';
 import { useUsers } from '../../services/hooks/useUsers';
+import { queryClient } from '../../services/queryClient';
 
 export default function UserList() {
   const [page, setPage] = useState(1);
@@ -32,7 +35,18 @@ export default function UserList() {
     lg: true
   });
 
-  console.log(page)
+  async function handlePrefetchUser(userId: string) {
+    await queryClient.prefetchQuery(
+      ['user', userId],
+      async () => {
+        const response = await api.get(`users/${userId}`);
+        return response.data;
+      },
+      {
+        staleTime: 1000 * 60 * 10
+      }
+    );
+  }
 
   return (
     <Box>
@@ -84,12 +98,7 @@ export default function UserList() {
                 </Thead>
                 <Tbody>
                   {data.users.map(
-                    (user: {
-                      id: number;
-                      name: string;
-                      email: string;
-                      createdAt: string;
-                    }) => {
+                    (user) => {
                       return (
                         <Tr key={user.id}>
                           <Td px={['4', '4', '6']}>
@@ -97,13 +106,19 @@ export default function UserList() {
                           </Td>
                           <Td>
                             <Box>
-                              <Text fontWeight="bold">{user.name}</Text>
+                              <ChakraLink
+                                color="purple.400"
+                                fontWeight="bold"
+                                onMouseEnter={() => handlePrefetchUser(user.id)}
+                              >
+                                {user.name}
+                              </ChakraLink>
                               <Text fontSize="sm" color="gray.300">
                                 {user.email}
                               </Text>
                             </Box>
                           </Td>
-                          {isWideVersion && <Td>{user.createdAt}</Td>}
+                          {isWideVersion && <Td>{user.created_at}</Td>}
                           <Td>
                             <Flex>
                               <Button
