@@ -1,12 +1,12 @@
 <h1>🚧 Projeto em andamento 🚧</h1>
 
-<h1>dashgo<strong style="color: pink;">.</strong></h1>
+<h1>dashgo.</h1>
 
 <img src="public/assets/captura.png" alt="dashgo" />
 
 <p>Projeto desenvolvido no curso de React da Rocketseat, o objetivo era criar uma aplicação para gerenciar 
 o fluxo de usuários cadastrados na plataforma.</p>
-<h2>Para visualizar o projeto
+<h2>Para visualizar o projeto</h2>
 
 obs: necessário ter o node e o git instalado em sua máquina.
 
