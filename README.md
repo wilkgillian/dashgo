@@ -12,13 +12,11 @@ obs: necessário ter o node e o git instalado em sua máquina.
 
 <ul>
 <li>Faça um clone deste repositório:
-<br />
-```bash
+```
 git clone https://github.com/wilkgillian/dashgo.git
 </li>
 <li>Rode o comando:
-<br />
-```bash
+```
 npm run dev
 # ou
 yarn dev
