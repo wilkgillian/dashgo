@@ -1,36 +1,41 @@
 <h1>🚧 Projeto em andamento 🚧</h1>
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<h1>dashgo<strong style="color: pink;">.</strong></h1>
 
-## Getting Started
+<img src="public/assets/captura.png" alt="dashgo" />
 
-First, run the development server:
+<p>Projeto desenvolvido no curso de React da Rocketseat, o objetivo era criar uma aplicação para gerenciar 
+o fluxo de usuários cadastrados na plataforma.</p>
+<h2>Para visualizar o projeto
 
+obs: necessário ter o node e o git instalado em sua máquina.
+
+<ul>
+<li>Faça um clone deste repositório:
+<br />
+```bash
+git clone https://github.com/wilkgillian/dashgo.git
+</li>
+<li>Rode o comando:
+<br />
 ```bash
 npm run dev
-# or
+# ou
 yarn dev
 ```
+</li>
+<li>Visualize no navegador http://localhost:3000
+</li></ul>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+<h2>Tecnologias utilizadas</h2>
+<ul>
+<li><a src="https://nextjs.org/">Nextjs</a></li>
+<li><a src="https://pt-br.reactjs.org/">React</a></li>
+<li><a src="https://chakra-ui.com/">Chakra-ui</a></li>
+<li><a src="https://www.typescriptlang.org/pt/">Typescript</a></li>
+<li><a src="https://miragejs.com/">Miraje Js</a></li>
+<li><a src="https://apexcharts.com/">Apexcharts</a></li>
+<li><a src="https://axios-http.com/ptbr/docs/intro">Axios</a></li>
+<li><a src="https://www.npmjs.com/package/yup">yup</a></li>
+<li><a src="https://tanstack.com/query/v4/?from=reactQueryV3&original=https://react-query-v3.tanstack.com/">React query</a></li>
+</ul>
